@@ -18,7 +18,6 @@ services:
     depends_on:
       - redis
       - mysql
-      - substrate-node
 
   harvester-worker:
     build: .
@@ -62,11 +61,3 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=polkascan
-
-  substrate-node:
-    image: polkasource/substrate-alexander:latest
-    ports:
-      - '30333:30333'
-      - '9933:9933'
-      - '9944:9944'
-    command: --dev --rpc-port 9933 --rpc-external --pruning=10000000
